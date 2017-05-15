@@ -36,8 +36,14 @@ postController.post = (req, res) => {
 postController.getAll = (req, res) => {
     // lista
     db.Post.find({}).populate({
-        path: '_creator'
-    }).then((posts) => {
+        path: '_creator',
+        select: 'nome createdAt -_id'
+    }).populate({
+        path: '_comentarios',
+        select: 'texto createdAt _creator',
+        match: { 'isDeleted': false }
+    })
+    .then((posts) => {
         return res.status(200).json({
             sucess: true,
             data: posts
