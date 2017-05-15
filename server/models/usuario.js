@@ -14,7 +14,9 @@ const usuarioSchema = new Schema({
         type: String,
         required: true,
         minLength: [6, 'Senha do usuário deve ter 6 ou mais carateres'],
-    }
+    },
+    isDeleted: { type: Boolean, default: false },
+    createdAt: { type: Date, default: Date.now },
 });
 
 // fazer encription para senha

@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import config  from './config';
 import routes from './routes';
 
-console.log(config);
+//console.log(config);
 //mongoose.connect(config.database); 
 
 mongoose.connect(config.database, () => {
