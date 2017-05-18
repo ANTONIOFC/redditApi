@@ -24,7 +24,22 @@ usuarioController.post = (req, res) => {
             message: err,
         })
     });
+};
 
-}
+usuarioController.getAll = (req, res) => {
+    // lista
+    db.Usuario.find({
+    })
+    .then((usuarios) => {
+        return res.status(200).json({
+            sucess: true,
+            data: usuarios
+        });
+    }).catch((err) => {
+        res.status(500).json({
+            message: err,
+        })
+    });
+};
 
 export default usuarioController;
