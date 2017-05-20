@@ -28,7 +28,9 @@ usuarioController.post = (req, res) => {
 
 usuarioController.getAll = (req, res) => {
     // lista
-    db.Usuario.find({
+    db.Usuario.find({})
+    .populate({
+        select: '_id, nome'
     })
     .then((usuarios) => {
         return res.status(200).json({
