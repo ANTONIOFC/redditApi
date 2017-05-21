@@ -3,7 +3,7 @@ import db from './../models'; //import db from './../models/index.js'
 const usuarioController = {};
 
 usuarioController.post = (req, res) => {
-    const { nome, logn, senha } = req.body;
+    const { nome, logon, senha } = req.body;
 
     // validation
 
