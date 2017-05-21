@@ -11,6 +11,7 @@ usuarioController.post = (req, res) => {
     const usuario = new db.Usuario({
         nome,
         logon,
+        email,
         senha
     });
 

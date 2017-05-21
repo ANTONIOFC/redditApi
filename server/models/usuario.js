@@ -15,6 +15,11 @@ const usuarioSchema = new Schema({
         required: true,
         minLength: [3, 'Logon do usuário deve ter 3 ou mais carateres'],
     },
+    email: {
+        type: String,
+        required: true,
+        minLength: [3, 'Email do usuário deve ter 3 ou mais carateres'],
+    },
     senha: {
         type: String,
         required: true,
