@@ -43,6 +43,22 @@ usuarioController.getAll = (req, res) => {
     });
 };
 
+usuarioController.getById = (req, res) => {
+    // lista
+    db.Usuario.findOne({'_id': req.params.id })
+    .select('_id nome logon')
+    .then((usuario) => {
+        return res.status(200).json({
+            sucess: true,
+            data: usuario
+        });
+    }).catch((err) => {
+        res.status(500).json({
+            message: err,
+        })
+    });
+};
+
 usuarioController.getByLogon = (req, res) => {
     // lista
     db.Usuario.findOne({'logon': req.params.logon })

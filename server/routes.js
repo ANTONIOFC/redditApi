@@ -14,6 +14,7 @@ routes.get('/', basicController.get);
 // usuario routes
 routes.post('/signup', usuarioController.post);
 routes.get('/usuarios', usuarioController.getAll);
+routes.get('/usuarios:/id', usuarioController.getById);
 routes.get('/usuarios/:logon', usuarioController.getByLogon);
 
 // Post routes
