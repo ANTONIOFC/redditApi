@@ -45,7 +45,7 @@ usuarioController.getAll = (req, res) => {
 
 usuarioController.getByLogon = (req, res) => {
     // lista
-    db.Usuario.findOne({'logon': {email: req.params.logon} })
+    db.Usuario.findOne({'logon': {logon: req.params.logon} })
     .select('_id nome logon')
     .then((usuario) => {
         return res.status(200).json({
