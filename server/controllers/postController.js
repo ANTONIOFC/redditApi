@@ -55,4 +55,27 @@ postController.getAll = (req, res) => {
     });
 };
 
+postController.getById = (req, res) => {
+    // lista
+    db.Post.findOne({'id': req.params.id }).populate({
+        path: '_creator',
+        select: 'nome createdAt -_id'
+    }).populate({
+        path: '_comentarios',
+        select: 'texto createdAt _creator',
+        match: { 'isDeleted': false }
+    })
+    .then((post) => {
+        return res.status(200).json({
+            sucess: true,
+            data: post
+        });
+    }).catch((err) => {
+        res.status(500).json({
+            message: err,
+        })
+    });
+};
+
+
 export default postController;

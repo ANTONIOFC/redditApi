@@ -16,10 +16,10 @@ routes.post('/signup', usuarioController.post);
 routes.get('/usuarios', usuarioController.getAll);
 routes.get('/usuarios/:logon', usuarioController.getByLogon);
 
-
 // Post routes
 routes.post('/post', postController.post);
 routes.get('/posts', postController.getAll);
+routes.get('/posts/:id', postController.getById);
 
 // comentário routes
 routes.post('/comentario', comentarioController.post);
