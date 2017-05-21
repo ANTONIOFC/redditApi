@@ -10,6 +10,11 @@ const usuarioSchema = new Schema({
         required: true,
         minLength: [5, 'Nome do usuário deve ter 5 ou mais carateres'],
     },
+    logon: {
+        type: String,
+        required: true,
+        minLength: [3, 'Logon do usuário deve ter 3 ou mais carateres'],
+    },
     senha: {
         type: String,
         required: true,

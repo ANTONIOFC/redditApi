@@ -3,13 +3,14 @@ import db from './../models'; //import db from './../models/index.js'
 const usuarioController = {};
 
 usuarioController.post = (req, res) => {
-    const { nome, senha } = req.body;
+    const { nome, logn, senha } = req.body;
 
     // validation
 
     // cria o usuário
     const usuario = new db.Usuario({
         nome,
+        logon,
         senha
     });
 
@@ -29,7 +30,7 @@ usuarioController.post = (req, res) => {
 usuarioController.getAll = (req, res) => {
     // lista
     db.Usuario.find({})
-    .select('_id nome')
+    .select('_id nome logon')
     .then((usuarios) => {
         return res.status(200).json({
             sucess: true,
@@ -42,10 +43,10 @@ usuarioController.getAll = (req, res) => {
     });
 };
 
-usuarioController.getByEmail = (req, res) => {
+usuarioController.getByLogon = (req, res) => {
     // lista
-    db.Usuario.findOne({'email': {email: req.params.email} })
-    .select('_id nome')
+    db.Usuario.findOne({'logon': {email: req.params.logon} })
+    .select('_id nome logon')
     .then((usuario) => {
         return res.status(200).json({
             sucess: true,
