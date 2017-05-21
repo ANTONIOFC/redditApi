@@ -42,4 +42,20 @@ usuarioController.getAll = (req, res) => {
     });
 };
 
+usuarioController.getByEmail = (req, res) => {
+    // lista
+    db.Usuario.findOne({'email': {email: req.body.email} })
+    .select('_id nome')
+    .then((usuario) => {
+        return res.status(200).json({
+            sucess: true,
+            data: usuario
+        });
+    }).catch((err) => {
+        res.status(500).json({
+            message: err,
+        })
+    });
+};
+
 export default usuarioController;
