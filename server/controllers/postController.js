@@ -57,7 +57,7 @@ postController.getAll = (req, res) => {
 
 postController.getById = (req, res) => {
     // lista
-    db.Post.findOne({'id': req.params.id }).populate({
+    db.Post.findOne({'_id': req.params.id }).populate({
         path: '_creator',
         select: 'nome createdAt -_id'
     }).populate({
