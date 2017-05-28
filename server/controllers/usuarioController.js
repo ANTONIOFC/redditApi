@@ -28,6 +28,31 @@ usuarioController.post = (req, res) => {
     });
 };
 
+usuarioController.put = (req, res) => {
+
+    db.Usuario.findById(req.params.id)
+        .select('_id nome logon senha email')
+        .then((usuario) => {
+            console.log(usuario);
+            usuario.nome = req.body.nome || usuario.nome;
+            usuario.logon = req.body.logon || usuario.logon;
+            usuario.senha = req.body.senha || usuario.senha;
+            usuario.email = req.body.email || usuario.email;
+            console.log(usuario);
+            // grava
+            usuario.save().then((usuario) => {
+                res.status(200).json({
+                    sucess: true,
+                    data: usuario,
+                })
+            }).catch((err) => {
+                res.status(500).json({
+                    message: err,
+                })
+            });
+    })
+};
+
 usuarioController.getAll = (req, res) => {
     // lista
     db.Usuario.find({})
@@ -46,7 +71,8 @@ usuarioController.getAll = (req, res) => {
 
 usuarioController.getById = (req, res) => {
     // lista
-    db.Usuario.findOne({'_id': req.params.id })
+    //db.Usuario.findOne({'_id': req.params.id })
+    db.Usuario.findById(req.params.id)
     .select('_id nome logon email')
     .then((usuario) => {
         return res.status(200).json({
@@ -60,10 +86,13 @@ usuarioController.getById = (req, res) => {
     });
 };
 
-usuarioController.getByLogon = (req, res) => {
+usuarioController.logar = (req, res) => {
+
+    console.log('Logon: ' + req.body.logon);
+    console.log('Senha: ' + req.body.senha);
     // lista
-    db.Usuario.findOne({'logon': req.params.logon })
-    .select('_id nome logon')
+    db.Usuario.findOne({'logon': req.body.logon, 'senha': req.body.senha })
+    .select('_id nome logon email')
     .then((usuario) => {
         return res.status(200).json({
             sucess: true,
