@@ -7,7 +7,7 @@ postController.post = (req, res) => {
         titulo,
         texto,
         link,
-        usuarioId
+        s
      } = req.body;
 
     // TODO: validation
@@ -32,6 +32,31 @@ postController.post = (req, res) => {
         })
     });
 };
+
+postController.put = (req, res) => {
+
+    db.Post.findById(req.params.id)
+        .select('_id titulo texto link')
+        .then((post) => {
+            console.log(post);
+            post.titulo = req.body.titulo || post.titulo;
+            post.texto = req.body.texto || post.texto;
+            post.link = req.body.link || post.link;
+            console.log(post);
+            // grava
+            post.save().then((post) => {
+                res.status(200).json({
+                    sucess: true,
+                    data: post,
+                })
+            }).catch((err) => {
+                res.status(500).json({
+                    message: err,
+                })
+            });
+    })
+};
+
 
 postController.getAll = (req, res) => {
     // lista

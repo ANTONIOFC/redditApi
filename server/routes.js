@@ -21,6 +21,7 @@ routes.post('/logar', usuarioController.logar);
 
 // Post routes
 routes.post('/post', postController.post);
+routes.put('/posts/:id', postController.put);
 routes.get('/posts', postController.getAll);
 routes.get('/posts/:id', postController.getById);
 
