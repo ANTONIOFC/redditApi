@@ -20,10 +20,10 @@ routes.post('/logar', usuarioController.logar);
 //routes.get('/auth/:logon', usuarioController.getByLogon);
 
 // Post routes
-routes.post('/post', postController.post);
-routes.put('/posts/:id', postController.put);
-routes.get('/posts', postController.getAll);
-routes.get('/posts/:id', postController.getById);
+routes.post('/materias', postController.post);
+routes.put('/materias/:id', postController.put);
+routes.get('/materias', postController.getAll);
+routes.get('/materias/:id', postController.getById);
 
 // comentário routes
 routes.post('/comentario', comentarioController.post);
