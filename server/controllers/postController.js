@@ -7,7 +7,7 @@ postController.post = (req, res) => {
         titulo,
         texto,
         link,
-        s
+        criadorId
      } = req.body;
 
     // TODO: validation
@@ -17,7 +17,7 @@ postController.post = (req, res) => {
         titulo,
         texto,
         link,   // ou link: link
-        _creator: usuarioId
+        _creator: criadorId
     });
 
     // grava
