@@ -26,6 +26,6 @@ routes.get('/materias', postController.getAll);
 routes.get('/materias/:id', postController.getById);
 
 // comentário routes
-routes.post('/comentario', comentarioController.post);
+routes.post('/comentarios', comentarioController.post);
 
 export default routes;
