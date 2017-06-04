@@ -66,7 +66,11 @@ postController.getAll = (req, res) => {
     }).populate({
         path: '_comentarios',
         select: 'texto createdAt _creator',
-        match: { 'isDeleted': false }
+        match: { 'isDeleted': false },
+        populate: {
+            path: '_creator',
+            select: 'nome -_id',
+        }
     })
     .then((posts) => {
         return res.status(200).json({
